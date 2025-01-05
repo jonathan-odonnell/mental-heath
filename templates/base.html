@@ -21,22 +21,34 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Indicators</a>
-                </li>
-                {% url 'stats' as url %}
-                <li class="nav-item">
-                    <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}">Stats</a>
-                    {% if request.path == url %}
-                    <span class="visually-hidden">(current)</span>
-                    {% endif %}
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">FAQs</a>
-                </li>
+                    {% url 'home' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}">Home</a>
+                        {% if request.path == url %}
+                        <span class="visually-hidden">(current)</span>
+                        {% endif %}
+                    </li>
+                    {% url 'indicators' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}">Indicators</a>
+                        {% if request.path == url %}
+                        <span class="visually-hidden">(current)</span>
+                        {% endif %}
+                    </li>
+                    {% url 'stats' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}">Stats</a>
+                        {% if request.path == url %}
+                        <span class="visually-hidden">(current)</span>
+                        {% endif %}
+                    </li>
+                    {% url 'faqs' as url %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == url %}active{% endif %}" href="{{ url }}">FAQs</a>
+                        {% if request.path == url %}
+                        <span class="visually-hidden">(current)</span>
+                        {% endif %}
+                    </li>
                 </ul>
                 <span class="navbar-text">
                 </span>
