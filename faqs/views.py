@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def faqs(request):
+    template = 'faqs.html'
+    return render(request, template, {})
