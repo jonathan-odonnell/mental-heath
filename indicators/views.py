@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def indicators(request):
+    template = 'indicators.html'
+    return render(request, template, {})
