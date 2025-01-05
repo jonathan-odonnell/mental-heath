@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import MentalHealth
 import pandas as pd
 
+
 def stats(request):
     if request.GET:
         country = request.GET['country']
@@ -17,6 +18,5 @@ def stats(request):
         'depression': df['depression'].to_list(),
         'country': country,
     }
-    print(dataset)
     template = 'stats.html'
     return render(request, template, {'dataset': dataset})
