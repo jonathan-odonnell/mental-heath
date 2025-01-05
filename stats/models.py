@@ -7,8 +7,8 @@ class MentalHealth(models.Model):
 
     country = models.CharField(max_length=254, blank=False, null=True)
     country_code = models.CharField(max_length=3, blank=False, null=True)
-    year = models.DateField(blank=False, null=True)
-    scizophrenia = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
+    year = models.IntegerField(blank=False, null=True)
+    schizophrenia = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
     bipolar_disorder = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
     eating_disorders = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
     anxiety_disorders = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
