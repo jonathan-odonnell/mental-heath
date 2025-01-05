@@ -13,8 +13,6 @@ class MentalHealth(models.Model):
     eating_disorders = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
     anxiety_disorders = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
     depression = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
-    drug_use_disorders = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
-    alcohol_use_disorders = models.DecimalField(decimal_places=6, max_digits=7, blank=True, null=True)
 
     def __str__(self):
         return f'{self.country} - {self.id}'
