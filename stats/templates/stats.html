@@ -1,1 +1,62 @@
 {% extends "base.html" %}
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12 my-4">
+        <h1 class="display-4 text-capitalize text-center">mental health statistics</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <canvas id="stats"></canvas>
+    </div>
+</div>
+{% endblock %}
+{% block postloadjs %}
+{{ dataset|json_script:"dataset" }}
+<script type="text/javascript">
+    let dataset = JSON.parse($('#dataset').text());
+    let country = (dataset['country'] == 'United Kingdom' || 'United states') ? `the ${dataset['country']}` : `${dataset['country']}`
+    new Chart($('#stats'), {
+    type: 'bar',
+    data: {
+      labels: dataset['labels'],
+      datasets: [{
+        label: 'Schitzophrenia',
+        data: dataset['schitzophrenia'],
+        hoverOffset: 4
+      }, {
+        label: 'Bipolar Disorder',
+        data: dataset['bipolar_disorder'],
+        hoverOffset: 4
+      }, {
+        label: 'Eating Disorders',
+        data: dataset['eating_disorders'],
+        hoverOffset: 4
+      }, {
+        label: 'Anxiety Disorders',
+        data: dataset['anxiety_disorders'],
+        hoverOffset: 4
+      }, {
+        label: 'Depression',
+        data: dataset['depression'],
+        hoverOffset: 4
+      }], 
+      
+    },
+    options: {
+      plugins: {
+            legend: {
+                position: 'left'
+            },
+            title: {
+                display: true,
+                text: `Mental Health Conditions in ${country} between ${dataset['labels'][0]} and ${dataset['labels'][4]}`,
+            }
+        }
+    }
+});
+</script>
+{% endblock %}
