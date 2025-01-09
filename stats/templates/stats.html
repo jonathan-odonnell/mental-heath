@@ -26,7 +26,7 @@
 {{ dataset|json_script:"dataset" }}
 <script type="text/javascript">
     let dataset = JSON.parse($('#dataset').text());
-    let country = (dataset['country'] == 'United Kingdom' || 'United states') ? `the ${dataset['country']}` : `${dataset['country']}`
+    let country = (dataset['country'] == 'United Kingdom' || dataset['country'] == 'United States') ? `the ${dataset['country']}` : `${dataset['country']}`
     new Chart($('#stats'), {
     type: 'bar',
     data: {
