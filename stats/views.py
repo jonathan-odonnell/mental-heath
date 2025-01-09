@@ -9,6 +9,7 @@ def stats(request):
     else:
         country = 'United Kingdom'
     df = pd.DataFrame(MentalHealth.objects.filter(country=country).order_by('year').values()).tail(5)
+    countries = MentalHealth.objects.values_list('country', flat=True).distinct()
     dataset = {
         'labels': df['year'].to_list(),
         'schitzophrenia': df['schitzophrenia'].to_list(),
@@ -19,4 +20,4 @@ def stats(request):
         'country': country,
     }
     template = 'stats.html'
-    return render(request, template, {'dataset': dataset})
+    return render(request, template, {'dataset': dataset, 'current_country': country, 'countries': countries })
